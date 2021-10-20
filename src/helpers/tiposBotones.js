@@ -85,7 +85,7 @@ export const tiposBotones = [
             clase: 'btnGeneral'
         },
         {
-            name: '*',
+            name: '=',
             clase: 'btnSuccess'
         }
     ]

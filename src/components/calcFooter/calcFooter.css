@@ -4,7 +4,7 @@
     height: 323px;
     padding: 22.400px 16px 22.400px 16px;
     background: #FFF;
-    /* display: grid;
+    display: grid;
     grid-template-columns: repeat(auto-fit,minmax(4rem,1fr));
-    grid-gap: .5rem; */
+    grid-gap: .5rem;
 }

@@ -1,15 +1,26 @@
 .btnDelete {
-
+    background-color: #fa386b;
+    color: #FFF;
 }
 
 .btnSuccess {
-
+    background-color: #30c117;
+    color: #FFF;
+    
 }
 
 .btnOperation {
-
+    background-color: #e6e7e8;
+    color: #231f20;
 }
 
 .btnGeneral {
-    
+    background-color: #e6e7e8;
+    color: #808285;
+}
+
+.btn {
+    border-radius: 1.5rem;
+    font-size: 1.65rem;
+    border: none;
 }

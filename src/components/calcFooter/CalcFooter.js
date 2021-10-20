@@ -1,4 +1,4 @@
-// import CalcBoton from '../calcBoton/CalcBoton'
+import CalcBoton from '../calcBoton/CalcBoton'
 import { Fragment } from 'react'
 import { tiposBotones } from '../../helpers/tiposBotones'
 
@@ -13,7 +13,7 @@ const CalcFooter = () => {
                         <Fragment key={i}>
                             {
                                 fila.map(btn => (
-                                    <button key={btn.name}>{ btn.name }</button>
+                                    <CalcBoton key={btn.name} {...btn}/>
                                 ))
                             }
                         </Fragment>
