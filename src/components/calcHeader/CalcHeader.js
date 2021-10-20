@@ -1,12 +1,12 @@
+import './calcHeader.css'
 
-
-const CalcFooter = () => {
+const CalcHeader = () => {
 
     return(
-        <div>
+        <div className="calcHeader-contenedor">
             Aqui Se muestran los resultados
         </div>
     )
 }
 
-export default CalcFooter
+export default CalcHeader

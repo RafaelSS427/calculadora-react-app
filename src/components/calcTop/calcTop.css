@@ -1,0 +1,9 @@
+.calcTop-contenedor {
+    width: 288px;
+    height: 32px;
+    padding: 16px;
+    margin-bottom: 32px;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    background: #FFF;
+}
