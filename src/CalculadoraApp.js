@@ -1,8 +1,11 @@
+import CalcContenedor from './components/calcContenedor'
 
 const CalculadoraApp = () => {
 
     return(
-        <h1>Hola mundo</h1>
+        <div className="calculadoraApp-contenedor">
+            <CalcContenedor />
+        </div>
     )
 
 }

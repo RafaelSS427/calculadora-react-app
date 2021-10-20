@@ -1,3 +1,12 @@
-body {
-  background: gray;
+*, body {
+  margin: 0;
+  padding: 0;
+}
+
+.calculadoraApp-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
