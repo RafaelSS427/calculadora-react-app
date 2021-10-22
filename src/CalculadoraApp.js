@@ -1,11 +1,14 @@
 import CalcContenedor from './components/calcContenedor'
+import CalcState from './context/CalcState'
 
 const CalculadoraApp = () => {
 
     return(
-        <div className="calculadoraApp-contenedor">
-            <CalcContenedor />
-        </div>
+        <CalcState>
+            <div className="calculadoraApp-contenedor">
+                <CalcContenedor />
+            </div>
+        </CalcState>
     )
 
 }

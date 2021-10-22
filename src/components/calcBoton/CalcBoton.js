@@ -1,8 +1,12 @@
+import { useContext } from 'react';
+import CalcContext from '../../context/CalcContext';
+
 import './calcBoton.css'
 
 
 const CalcBoton = ({name, clase}) => {
-    //Allan fernandez
+
+    const { resetearValores } = useContext(CalcContext)
 
     const handleClick = () => {
         switch (name) {
@@ -12,6 +16,10 @@ const CalcBoton = ({name, clase}) => {
 
             case '1':
                 console.log('Voy agregar un uno');
+            break;
+
+            case '=':
+                resetearValores()
             break;
         
             default:
