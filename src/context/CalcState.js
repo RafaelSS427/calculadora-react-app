@@ -6,8 +6,8 @@ import { calcReducer } from './calcReducer'
 const init = () => ({
     startDato: '',
     endDato: '',
+    resultado: 0,
     operacion: null, // + , - , * ...
-    contador: 0
 })
 
 
@@ -17,21 +17,49 @@ const CalcState = ({ children }) => {
 
     const resetearValores = () => {
         const initialState = init()
-        
-        console.log(initialState)
 
-        console.log('Intento resetear los valores');
-        
-        // dispatch({
-        //     type: types.calcResetValores,
-        //     payload: initialState
-        // })
+        dispatch({
+            type: types.calcResetValores,
+            payload: initialState
+        })
+    }
+
+    const addNumberStartDato = (number) => {
+        dispatch({
+            type: types.calcAddNumStartDato,
+            payload: number
+        })
+    }
+
+    const addNumberEndDato = (number) => {
+        dispatch({
+            type: types.calcAddNumEndDato,
+            payload: number
+        })
+    }
+
+    const setResultOperacion = (result) => {
+        dispatch({
+            type: types.calcSetResultOperacion,
+            payload: result
+        })
+    }
+
+    const setOperacion = (operacion) => {
+        dispatch({
+            type: types.calcSetOperacion,
+            payload: operacion
+        })
     }
 
     return(
         <CalcContext.Provider value={{
             state,
-            resetearValores
+            resetearValores,
+            addNumberStartDato,
+            addNumberEndDato,
+            setResultOperacion,
+            setOperacion
         }}>
             { children }
         </CalcContext.Provider>
