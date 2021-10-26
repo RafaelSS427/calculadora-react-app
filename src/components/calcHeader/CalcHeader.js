@@ -1,11 +1,29 @@
+import { useContext } from 'react'
+import CalcContext from '../../context/CalcContext'
+
 import './calcHeader.css'
 
 const CalcHeader = () => {
 
+    const { state } = useContext(CalcContext)
+
+    const { startDato, endDato, resultado, operacion } = state
+
+    console.log(state);
+
+    const existeOperacion = !!operacion 
+
     return(
         <div className="calcHeader-contenedor">
-            <small>1111111111+1111111111</small>
-            <h1>111111111111111111111111111</h1>
+            {
+                (existeOperacion) && <small>{ startDato }{operacion}{ endDato }</small>
+            }
+            {
+                (!existeOperacion) && <h1>{ startDato }</h1>
+            }
+            {
+                (resultado !== 0) && <h1>{ resultado }</h1>
+            }
         </div>
     )
 }

@@ -1,6 +1,13 @@
 import { types } from "../types/types"
 
 
+// {
+//     startDato: '',
+//     endDato: '',
+//     resultado: 0,
+//     operacion: null, // + , - , * ...
+// }
+
 export const calcReducer = (state, action) => {
     const { type, payload } = action
 
@@ -8,8 +15,7 @@ export const calcReducer = (state, action) => {
         case types.calcResetValores:
             return {
                 ...state,
-                ...payload,
-                resultado: state.resultado
+                ...payload
             }
 
         case types.calcAddNumStartDato:

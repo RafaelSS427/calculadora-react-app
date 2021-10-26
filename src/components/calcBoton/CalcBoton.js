@@ -17,20 +17,23 @@ const CalcBoton = ({name, clase}) => {
     const { startDato, endDato, resultado, operacion } = state
 
     const handleClickNumber = () => {
-        const datoSave = startDato === '' ? name : startDato + name 
 
         if( operacion === null ){
+            const datoSave = startDato === '' ? name : startDato + name 
             addNumberStartDato(datoSave)
         } else {
+            const datoSave = endDato === '' ? name : endDato + name
             addNumberEndDato(datoSave)
         }
+
+        if(resultado !== 0 ) setResultOperacion(0)
     }
 
     const handleClickOperacion = () => {
 
         switch (name) {
             case 'c':
-                resetearValores()
+                resetearValores(0)
             break;
 
             case '+':
@@ -42,16 +45,13 @@ const CalcBoton = ({name, clase}) => {
             break;
 
             case '=':
-                console.log({'one': parseInt(startDato), 'two': parseInt(endDato)});
                 const result = parseInt(startDato) + parseInt(endDato)
 
-                console.log(result);
-
-                // TODO: realizar calculo
-                if(resultado === 0) {
-                    setResultOperacion(result)
-                    resetearValores()
-                }
+                setResultOperacion(result)
+                resetearValores(result)
+                console.log(state);
+                
+                
             break;
         
             default:
