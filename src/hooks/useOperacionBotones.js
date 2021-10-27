@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import CalcContext from '../context/CalcContext'
 import { tiposOperaciones } from '../helpers/tiposOperaciones'
-import { useNumberSimb } from './useNumberSimb'
 
 export const useOperacionBotones = (name) => {
 
@@ -13,8 +12,6 @@ export const useOperacionBotones = (name) => {
         setOperacion } = useContext(CalcContext)
 
     const { startDato, endDato, resultado, operacion } = state
-
-    const [ simbolo, changeSimbolo ] = useNumberSimb()
 
     //Guarda los valores digitados en el primer valor
     const startDatoSave = () => {
@@ -71,11 +68,7 @@ export const useOperacionBotones = (name) => {
             break;
 
             case '+/-':
-                changeSimbolo()
-                const dato = `${simbolo}${startDato}`
-                console.log(simbolo)
-                console.log(dato)
-                addNumberStartDato(dato)
+                console.log('Hola me ejecuto');
             break
 
             case '=':
