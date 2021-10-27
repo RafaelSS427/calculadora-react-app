@@ -9,9 +9,10 @@ export const useOperacionBotones = (name) => {
         addNumberStartDato, 
         addNumberEndDato,
         setResultOperacion,
-        setOperacion } = useContext(CalcContext)
+        setOperacion,
+        setSimbolStartNumber } = useContext(CalcContext)
 
-    const { startDato, endDato, resultado, operacion } = state
+    const { startDato, endDato, resultado, operacion, estadoSimb } = state
 
     //Guarda los valores digitados en el primer valor
     const startDatoSave = () => {
@@ -68,7 +69,10 @@ export const useOperacionBotones = (name) => {
             break;
 
             case '+/-':
-                console.log('Hola me ejecuto');
+                const value = estadoSimb ? '-' : '+'
+                setSimbolStartNumber(value + startDato)
+
+                //TODO: se indentifico el error, el simbolo se concatena con el valor de startDato
             break
 
             case '=':
@@ -79,6 +83,7 @@ export const useOperacionBotones = (name) => {
             break;
         
             default:
+                console.log('No existe esta operacion');
                 break;
         }
     }

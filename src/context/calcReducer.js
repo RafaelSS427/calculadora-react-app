@@ -44,10 +44,12 @@ export const calcReducer = (state, action) => {
             }
         }
         
-        case types.calcSetEstadoSimp:
+        case types.calcSetSimbolStartNumber:
             return {
                 ...state,
-                estadoSimb: !state.estadoSimb
+                estadoSimb: !state.estadoSimb,
+                startDato: payload
+                // startDato: `${state.estadoSimb ? '-' : '+'}${payload}`
             }
         
         default:

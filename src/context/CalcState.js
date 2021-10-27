@@ -8,6 +8,7 @@ const init = () => ({
     endDato: '',
     resultado: null,
     operacion: null, // + , - , * ...
+    estadoSimb: false
 })
 
 //Este componente tendrá toda la data de la app
@@ -59,6 +60,13 @@ const CalcState = ({ children }) => {
         })
     }
 
+    const setSimbolStartNumber = (numero) => {
+        dispatch({
+            type: types.calcSetSimbolStartNumber,
+            payload: numero
+        })
+    }
+
     return(
         <CalcContext.Provider value={{
             state,
@@ -66,7 +74,8 @@ const CalcState = ({ children }) => {
             addNumberStartDato,
             addNumberEndDato,
             setResultOperacion,
-            setOperacion
+            setOperacion,
+            setSimbolStartNumber
         }}>
             { children }
         </CalcContext.Provider>
