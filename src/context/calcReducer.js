@@ -6,6 +6,7 @@ import { types } from "../types/types"
 //     endDato: '',
 //     resultado: 0,
 //     operacion: null, // + , - , * ...
+//     estadoSimb: false
 // }
 
 export const calcReducer = (state, action) => {
@@ -42,6 +43,12 @@ export const calcReducer = (state, action) => {
                 operacion: payload
             }
         }
+        
+        case types.calcSetEstadoSimp:
+            return {
+                ...state,
+                estadoSimb: !state.estadoSimb
+            }
         
         default:
             return state

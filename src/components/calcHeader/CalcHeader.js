@@ -22,7 +22,7 @@ const CalcHeader = () => {
                 (!existeOperacion) && <h1>{ startDato }</h1>
             }
             {
-                (resultado !== 0) && <h1>{ resultado }</h1>
+                (resultado !== null) && <h1>{ resultado }</h1>
             }
         </div>
     )

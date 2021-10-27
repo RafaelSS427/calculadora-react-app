@@ -1,5 +1,7 @@
 import { useContext } from 'react'
 import CalcContext from '../context/CalcContext'
+import { tiposOperaciones } from '../helpers/tiposOperaciones'
+import { useNumberSimb } from './useNumberSimb'
 
 export const useOperacionBotones = (name) => {
 
@@ -12,42 +14,75 @@ export const useOperacionBotones = (name) => {
 
     const { startDato, endDato, resultado, operacion } = state
 
+    const [ simbolo, changeSimbolo ] = useNumberSimb()
+
+    //Guarda los valores digitados en el primer valor
+    const startDatoSave = () => {
+        const datoSave = startDato === '' ? name : startDato + name 
+        addNumberStartDato(datoSave)
+    }
+
     const handleClickNumber = () => {
 
         if( operacion === null ){
-            const datoSave = startDato === '' ? name : startDato + name 
-            addNumberStartDato(datoSave)
+            startDatoSave()
         } else {
             const datoSave = endDato === '' ? name : endDato + name
             addNumberEndDato(datoSave)
         }
 
-        if(resultado !== 0 ) setResultOperacion(0)
+        if(resultado !== null ) setResultOperacion(null)
+    }
+
+    //Agrega + o - al primer valor
+    const startDatoValor = () => {
+        if(!(!!startDato)) {
+            startDatoSave()
+        } else {
+            setOperacion(name)
+        }
     }
 
     const handleClickOperacion = () => {
 
         switch (name) {
             case 'c':
-                resetearValores(0)
+                resetearValores(null)
             break;
 
             case '+':
-                setOperacion(name)
+                startDatoValor()
             break;
 
             case '-':
-                console.log(state);
+                startDatoValor()
             break;
 
-            case '=':
-                const result = parseInt(startDato) + parseInt(endDato)
+            case '*':
+                setOperacion(name)
+            break;
 
+            case '/':
+                setOperacion(name)
+            break;
+
+            case '%':
+                setOperacion(name)
+            break;
+
+            case '+/-':
+                changeSimbolo()
+                const dato = `${simbolo}${startDato}`
+                console.log(simbolo)
+                console.log(dato)
+                addNumberStartDato(dato)
+            break
+
+            case '=':
+                const result = tiposOperaciones(operacion, parseInt(startDato), parseInt(endDato))
                 setResultOperacion(result)
                 resetearValores(result)
                 console.log(state);
-                
-                
             break;
         
             default:

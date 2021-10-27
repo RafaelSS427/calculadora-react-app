@@ -6,7 +6,7 @@ import { calcReducer } from './calcReducer'
 const init = () => ({
     startDato: '',
     endDato: '',
-    resultado: 0,
+    resultado: null,
     operacion: null, // + , - , * ...
 })
 
