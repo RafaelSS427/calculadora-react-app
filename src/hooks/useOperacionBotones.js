@@ -1,12 +1,13 @@
 import { useContext } from 'react'
 import CalcContext from '../context/CalcContext'
 import { tiposOperaciones } from '../helpers/tiposOperaciones'
+import { setSimboloNumber } from '../helpers/setSimboloNumber'
 
 export const useOperacionBotones = (name) => {
 
     const { state, 
         resetearValores, 
-        addNumberStartDato, 
+        addNumberStartDato,
         addNumberEndDato,
         setResultOperacion,
         setOperacion,
@@ -69,10 +70,10 @@ export const useOperacionBotones = (name) => {
             break;
 
             case '+/-':
-                const value = estadoSimb ? '-' : '+'
-                setSimbolStartNumber(value + startDato)
-
-                //TODO: se indentifico el error, el simbolo se concatena con el valor de startDato
+                if(!!startDato) {    
+                    const value = estadoSimb ? '+' : '-'
+                    setSimbolStartNumber(value + setSimboloNumber(startDato))
+                }
             break
 
             case '=':
@@ -84,7 +85,7 @@ export const useOperacionBotones = (name) => {
         
             default:
                 console.log('No existe esta operacion');
-                break;
+            break;
         }
     }
 
