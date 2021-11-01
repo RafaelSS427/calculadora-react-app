@@ -33,28 +33,23 @@ export const useOperacionBotones = (name) => {
         if(resultado !== null ) setResultOperacion(null)
     }
 
-    //Agrega + o - al primer valor
-    const startDatoValor = () => {
-        if(!(!!startDato)) {
-            startDatoSave()
-        } else {
-            setOperacion(name)
-        }
-    }
-
     const handleClickOperacion = () => {
 
+        if(name === 'c'){
+            resetearValores(null)
+        }
+
+        //Si no existe un valor inicial
+        if(!startDato) return
+
         switch (name) {
-            case 'c':
-                resetearValores(null)
-            break;
 
             case '+':
-                startDatoValor()
+                setOperacion(name)
             break;
 
             case '-':
-                startDatoValor()
+                setOperacion(name)
             break;
 
             case '*':
@@ -76,8 +71,22 @@ export const useOperacionBotones = (name) => {
                 }
             break
 
+            case '.':
+                if( operacion === null ){
+                    if(!startDato.includes('.')){
+                        const newDato = startDato + '.'
+                        addNumberStartDato(newDato)
+                    }
+                } else {
+                    if(!endDato.includes('.')){
+                        const newDato = endDato + '.'
+                        addNumberEndDato(newDato)
+                    }
+                }
+            break;
+
             case '=':
-                const result = tiposOperaciones(operacion, parseInt(startDato), parseInt(endDato))
+                const result = tiposOperaciones(operacion, parseFloat(startDato), parseFloat(endDato))
                 setResultOperacion(result)
                 resetearValores(result)
                 console.log(state);
