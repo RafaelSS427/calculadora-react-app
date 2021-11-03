@@ -5,5 +5,7 @@ export const types = {
     calcAddNumEndDato: '[calc] Add number end dato',
     calcSetResultOperacion: '[calc] Set result operacion',
     calcSetOperacion: '[calc] Set operacion',
-    calcSetSimbolStartNumber: '[calc] Set simbolo start numero'
+    calcSetSimbolStartNumber: '[calc] Set simbolo start numero',
+    calcSetShowHistory: '[calc] Set show history',
+    calcAddValueHistorial: '[calc] Add value historial'
 }

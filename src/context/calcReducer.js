@@ -51,6 +51,21 @@ export const calcReducer = (state, action) => {
                 startDato: payload
                 // startDato: `${state.estadoSimb ? '-' : '+'}${payload}`
             }
+
+        case types.calcSetShowHistory:
+            return {
+                ...state,
+                showHistory: !state.showHistory
+            }
+
+        case types.calcAddValueHistorial:
+            return {
+                ...state,
+                historial: [
+                    ...state.historial,
+                    payload
+                ]
+            }
         
         default:
             return state

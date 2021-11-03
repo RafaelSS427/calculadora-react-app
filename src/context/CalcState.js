@@ -8,7 +8,9 @@ const init = () => ({
     endDato: '',
     resultado: null,
     operacion: null, // + , - , * ...
-    estadoSimb: false
+    estadoSimb: false,
+    showHistory: false,
+    historial: []
 })
 
 //Este componente tendrá toda la data de la app
@@ -18,6 +20,8 @@ const CalcState = ({ children }) => {
     //resetea los valores del reducer
     const resetearValores = (result) => {
         const initialState = init()
+
+        if(result !== null) delete initialState.historial
 
         dispatch({
             type: types.calcResetValores,
@@ -67,6 +71,19 @@ const CalcState = ({ children }) => {
         })
     }
 
+    const setShowHistory = () => {
+        dispatch({
+            type: types.calcSetShowHistory
+        })
+    }
+
+    const addValueHistorial = (value) => {
+        dispatch({
+            type: types.calcAddValueHistorial,
+            payload: value
+        })
+    }
+
     return(
         <CalcContext.Provider value={{
             state,
@@ -75,7 +92,9 @@ const CalcState = ({ children }) => {
             addNumberEndDato,
             setResultOperacion,
             setOperacion,
-            setSimbolStartNumber
+            setSimbolStartNumber,
+            setShowHistory,
+            addValueHistorial
         }}>
             { children }
         </CalcContext.Provider>

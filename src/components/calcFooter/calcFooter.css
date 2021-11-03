@@ -8,3 +8,12 @@
     grid-template-columns: repeat(auto-fit,minmax(4rem,1fr));
     grid-gap: .5rem;
 }
+
+
+.calcHistory-contenedor{
+    overflow-y: scroll;
+}
+
+.mb-6 {
+    margin-bottom: 6px;
+}

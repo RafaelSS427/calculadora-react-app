@@ -5,5 +5,18 @@
     margin-bottom: 32px;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-    background: #FFF;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-top {
+    border-radius: 50%;
+    font-size: 1rem;
+    border: none;
+    color: #FFF;
+    background-color: rgb(96, 52, 187);
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
 }

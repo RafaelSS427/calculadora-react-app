@@ -11,7 +11,8 @@ export const useOperacionBotones = (name) => {
         addNumberEndDato,
         setResultOperacion,
         setOperacion,
-        setSimbolStartNumber } = useContext(CalcContext)
+        setSimbolStartNumber,
+        addValueHistorial } = useContext(CalcContext)
 
     const { startDato, endDato, resultado, operacion, estadoSimb } = state
 
@@ -84,10 +85,19 @@ export const useOperacionBotones = (name) => {
                     }
                 }
             break;
+            
+            case '()':
+                console.log('Hola mundo');
+            break;
 
             case '=':
                 const result = tiposOperaciones(operacion, parseFloat(startDato), parseFloat(endDato))
-                setResultOperacion(result)
+                addValueHistorial({
+                    num1: parseFloat(startDato),
+                    num2: parseFloat(endDato),
+                    operacion,
+                    result
+                })
                 resetearValores(result)
                 console.log(state);
             break;
