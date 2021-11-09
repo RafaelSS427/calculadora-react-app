@@ -8,7 +8,7 @@ import CalcHistory from './CalcHistory'
 
 const CalcFooter = () => {
 
-    const { state } = useContext(CalcContext)
+    const { state, resetHistorial } = useContext(CalcContext)
 
     const { showHistory, historial } = state
 
@@ -16,7 +16,11 @@ const CalcFooter = () => {
         <div className="calcFooter-contenedor">
 
             {
-                showHistory && <CalcHistory historial={historial}/>
+                showHistory && 
+                <CalcHistory 
+                    historial={historial} 
+                    resetHistorial={resetHistorial}
+                />
             }
 
             {

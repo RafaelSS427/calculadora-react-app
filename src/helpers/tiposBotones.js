@@ -5,7 +5,7 @@ export const tiposBotones = [
             clase: 'btnDelete'
         },
         {
-            name: '()',
+            name: 'x^y',
             clase: 'btnOperation'
         },
         {

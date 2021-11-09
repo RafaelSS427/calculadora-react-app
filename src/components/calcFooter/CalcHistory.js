@@ -1,8 +1,22 @@
 
-const CalcHistory = ({ historial }) => {
+const CalcHistory = ({ historial, resetHistorial }) => {
+
+    const handleDelete = () => {
+        resetHistorial()
+    }
 
     return(
         <div className="calcHistory-contenedor">
+
+
+            <div className="contenedor-btn-delete">
+                <button
+                    className="btn-delete"
+                    onClick={ handleDelete }
+                >
+                    <i className="far fa-trash-alt"></i>
+                </button>
+            </div>
 
             {
                 historial.length === 0 ? 

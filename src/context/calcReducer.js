@@ -16,7 +16,14 @@ export const calcReducer = (state, action) => {
         case types.calcResetValores:
             return {
                 ...state,
-                ...payload
+                ...payload,
+                historial: state.historial
+            }
+
+        case types.calcResetHistorial:
+            return {
+                ...state,
+                historial: []
             }
 
         case types.calcAddNumStartDato:
@@ -66,6 +73,12 @@ export const calcReducer = (state, action) => {
                     payload
                 ]
             }
+        
+            case types.calcSetMessage:
+                return {
+                    ...state,
+                    message: payload
+                }
         
         default:
             return state

@@ -17,3 +17,34 @@
 .mb-6 {
     margin-bottom: 6px;
 }
+
+
+.contenedor-btn-delete {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.btn-delete {
+    padding: 6px;
+    margin-bottom: 6px;
+    margin-right: 6px;
+    background-color: #F73F2F;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+
+    transition: 300ms all ease;
+}
+
+.btn-delete:hover {
+    background-color: white;
+    color: #F73F2F;
+    border: 1px solid #F73F2F;
+}
+
+.btn-delete:active {
+    background-color: #F73F2F;
+    color: white;
+    border: 1px solid white;
+    transition: none;
+}

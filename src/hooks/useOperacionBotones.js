@@ -12,9 +12,10 @@ export const useOperacionBotones = (name) => {
         setResultOperacion,
         setOperacion,
         setSimbolStartNumber,
-        addValueHistorial } = useContext(CalcContext)
+        addValueHistorial,
+        setMessage } = useContext(CalcContext)
 
-    const { startDato, endDato, resultado, operacion, estadoSimb } = state
+    const { startDato, endDato, resultado, operacion, estadoSimb, message } = state
 
     //Guarda los valores digitados en el primer valor
     const startDatoSave = () => {
@@ -32,12 +33,13 @@ export const useOperacionBotones = (name) => {
         }
 
         if(resultado !== null ) setResultOperacion(null)
+        if(message !== '') setMessage('')
     }
 
     const handleClickOperacion = () => {
 
         if(name === 'c'){
-            resetearValores(null)
+            return resetearValores(null)
         }
 
         //Si no existe un valor inicial
@@ -86,12 +88,20 @@ export const useOperacionBotones = (name) => {
                 }
             break;
             
-            case '()':
-                console.log('Hola mundo');
+            case 'x^y':
+                setOperacion('^')
             break;
 
             case '=':
+                if(startDato === '' || operacion === null || endDato === '') return
+
                 const result = tiposOperaciones(operacion, parseFloat(startDato), parseFloat(endDato))
+
+                if(result === Infinity || isNaN(result)){
+                    resetearValores(null)
+                    return setMessage('No se puede realizar la operación')
+                }
+
                 addValueHistorial({
                     num1: parseFloat(startDato),
                     num2: parseFloat(endDato),
@@ -99,7 +109,7 @@ export const useOperacionBotones = (name) => {
                     result
                 })
                 resetearValores(result)
-                console.log(state);
+                addNumberStartDato(result + '')
             break;
         
             default:

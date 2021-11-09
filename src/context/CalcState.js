@@ -10,7 +10,8 @@ const init = () => ({
     operacion: null, // + , - , * ...
     estadoSimb: false,
     showHistory: false,
-    historial: []
+    historial: [],
+    message: ''
 })
 
 //Este componente tendrá toda la data de la app
@@ -21,14 +22,19 @@ const CalcState = ({ children }) => {
     const resetearValores = (result) => {
         const initialState = init()
 
-        if(result !== null) delete initialState.historial
+        //if(result !== null) delete initialState.historial
+        const newData = { ...initialState, resultado: result }
 
         dispatch({
             type: types.calcResetValores,
-            payload: {
-                ...initialState,
-                resultado: result
-            }
+            payload: newData
+        })
+    }
+
+    //Resetea el historial
+    const resetHistorial = () => {
+        dispatch({
+            type: types.calcResetHistorial
         })
     }
 
@@ -64,6 +70,7 @@ const CalcState = ({ children }) => {
         })
     }
 
+    //Cambia el simbolo del primer numero
     const setSimbolStartNumber = (numero) => {
         dispatch({
             type: types.calcSetSimbolStartNumber,
@@ -71,12 +78,14 @@ const CalcState = ({ children }) => {
         })
     }
 
+    //Cambia el controlador para observar el historial
     const setShowHistory = () => {
         dispatch({
             type: types.calcSetShowHistory
         })
     }
 
+    //Agrega un valor al historial
     const addValueHistorial = (value) => {
         dispatch({
             type: types.calcAddValueHistorial,
@@ -84,17 +93,27 @@ const CalcState = ({ children }) => {
         })
     }
 
+    //Cambia el mensaje por si ocurre un error
+    const setMessage = ( msg ) => {
+        dispatch({
+            type: types.calcSetMessage,
+            payload: msg
+        })
+    }
+
     return(
         <CalcContext.Provider value={{
             state,
             resetearValores,
+            resetHistorial,
             addNumberStartDato,
             addNumberEndDato,
             setResultOperacion,
             setOperacion,
             setSimbolStartNumber,
             setShowHistory,
-            addValueHistorial
+            addValueHistorial,
+            setMessage
         }}>
             { children }
         </CalcContext.Provider>

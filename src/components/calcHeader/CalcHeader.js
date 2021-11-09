@@ -7,22 +7,19 @@ const CalcHeader = () => {
 
     const { state } = useContext(CalcContext)
 
-    const { startDato, endDato, resultado, operacion } = state
-
-    console.log(state);
+    const { startDato, endDato, message, operacion } = state
 
     const existeOperacion = !!operacion 
 
     return(
         <div className="calcHeader-contenedor">
+
+            { (startDato === '' && message === '') && <h1>0</h1> }
+           
             {
-                (existeOperacion) && <small>{ startDato }{operacion}{ endDato }</small>
-            }
-            {
-                (!existeOperacion) && <h1>{ startDato }</h1>
-            }
-            {
-                (resultado !== null) && <h1>{ resultado }</h1>
+                (!!message) ?
+                <h3>{ message }</h3> : 
+                <h1>{existeOperacion ? `${startDato }${operacion}${ endDato }` : startDato}</h1>
             }
         </div>
     )

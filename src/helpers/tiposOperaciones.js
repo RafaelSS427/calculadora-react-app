@@ -9,6 +9,8 @@ const division = (num1, num2) => (num1 / num2)
 
 const porcentaje = (num1, num2) => (num1 * parseFloat(`0.${num2}`))
 
+const elevar = (num1, num2) => ( Math.pow(num1, num2) )
+
 export const tiposOperaciones = (operacion, startDato, endDato) => {
     
     switch (operacion) {
@@ -24,6 +26,9 @@ export const tiposOperaciones = (operacion, startDato, endDato) => {
 
         case '%':
             return porcentaje(startDato, endDato)
+
+        case '^':
+            return elevar(startDato, endDato)
 
         default:
             return 'Error'
